@@ -18,8 +18,8 @@ config.plugins.stdout.set_default(
     '</36>'
   ].join('')
 )
-config.plugins.stdout.set_default(:sweets, %w[jugyo ujm sora_h lingr_termtter termtter hitode909 nanki sixeight])
-config.plugins.stdout.set_default(:sweet_color, 'red')
+config.plugins.stdout.set_default(:sweets, %w[Sally_0601 kkkn])
+config.plugins.stdout.set_default(:sweet_color, 'cyan')
 config.plugins.stdout.set_default(:time_format_today, '%H:%M:%S')
 config.plugins.stdout.set_default(:time_format_not_today, '%y/%m/%d %H:%M')
 config.plugins.stdout.set_default(:enable_pager, false)
