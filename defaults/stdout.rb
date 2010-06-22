@@ -11,8 +11,11 @@ config.plugins.stdout.set_default(
     '<36><%=time%> [<%=status_id%>]</36> ',
     '<%= indent_text %>',
     '<<%=color%>><%=s.user.screen_name%>: <%=text%></<%=color%>> ',
+    '<31>',
+    '<%=s.user.protected ? "[x] " : ""%>',
+    '</31>',
     '<36>',
-    '<%=s.user.protected ? "[x]" : ""%><%=source%>',
+    '<%=source%>',
     '<%=reply_to_status_id ? " (reply_to [#{reply_to_status_id}]) " : ""%>',
     '<%=retweeted_status_id ? " (retweet_to [#{retweeted_status_id}]) " : ""%>',
     '</36>'
