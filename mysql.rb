@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 require 'active_record'
 #config.plugins.db.set_default(:path, Termtter::CONF_DIR + '/termtter.db')
-config.plugins.mysql.table = ''
+config.plugins.mysql.database = ''
 config.plugins.mysql.username = ''
 config.plugins.mysql.password = ''
 
 ActiveRecord::Base.logger=Logger.new(nil)
 ActiveRecord::Base.establish_connection(
   :adapter  => "mysql",
-  :database => config.plugins.mysql.table,
+  :database => config.plugins.mysql.dabaaase,
   :username => config.plugins.mysql.username,
   :password => config.plugins.mysql.password
 )
