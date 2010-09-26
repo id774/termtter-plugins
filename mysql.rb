@@ -8,7 +8,7 @@ config.plugins.mysql.password = ''
 ActiveRecord::Base.logger=Logger.new(nil)
 ActiveRecord::Base.establish_connection(
   :adapter  => "mysql",
-  :database => config.plugins.mysql.dabaaase,
+  :database => config.plugins.mysql.database,
   :username => config.plugins.mysql.username,
   :password => config.plugins.mysql.password
 )
