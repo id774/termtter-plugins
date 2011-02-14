@@ -17,9 +17,13 @@ unless Status.table_exists?()
     t.column :screen_name, :string
     t.column :text, :string
     t.column :created_at, :string
+    t.column :protected, :boolean
     t.column :in_reply_to_status_id, :integer
     t.column :in_reply_to_user_id, :integer
-    t.column :retweeted_status, :boolean
+    t.column :in_reply_to_screen_name, :string
+    t.column :statuses_count, :integer
+    t.column :friends_count, :integer
+    t.column :followers_count, :integer
     t.column :source, :string
   end
 end
@@ -32,11 +36,9 @@ module Termtter
           status = {}
           Status.columns.map{|x| x.name.intern }.each do |col|
             status[col] =
-              if col == :protected
-                s.protected
-              elsif col == :uid
+              if col == :uid
                 s.user.id
-              elsif col == :screen_name
+              elsif col == :screen_name || col == :statuses_count || col == :friends_count || col == :followers_count || col == :protected
                 s.user[col]
               else
                 s[col]
