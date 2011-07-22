@@ -15,14 +15,16 @@ config.plugins.stdout.set_default(
     '<%=s.user.protected ? "[x] " : ""%>',
     '</31>',
     '<36>',
-    '<%=source%>',
     '<%=reply_to_status_id ? " (reply_to [#{reply_to_status_id}]) " : ""%>',
     '<%=retweeted_status_id ? " (retweet_to [#{retweeted_status_id}]) " : ""%>',
-    '</36>'
+    '</36>',
+    '<34>',
+    '<%=source%>',
+    '</34>'
   ].join('')
 )
-config.plugins.stdout.set_default(:sweets, %w[Sally_0601])
-config.plugins.stdout.set_default(:sweet_color, 'cyan')
+config.plugins.stdout.set_default(:sweets, %w[twitt])
+config.plugins.stdout.set_default(:sweet_color, 'magenta')
 config.plugins.stdout.set_default(:time_format_today, '%H:%M:%S')
 config.plugins.stdout.set_default(:time_format_not_today, '%y/%m/%d %H:%M')
 config.plugins.stdout.set_default(:enable_pager, false)
