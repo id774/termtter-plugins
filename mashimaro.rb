@@ -12,4 +12,10 @@ module Termtter::Client
   )
 end
 
+module Termtter::Client
+  register_macro(:mashimaro_otsukare, "update %s おつかれましまろ～ヽ(｡´･ω･`｡)ノ",
+    :help => ['mashimaro_otsukare {SCREENNAME}', 'update "@{SCREENNAME} おつかれましまろ～ヽ(｡´･ω･`｡)ノ"']
+  )
+end
+
 # vim: fenc=utf8
