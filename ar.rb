@@ -16,7 +16,7 @@ unless Status.table_exists?()
     t.column :uid, :integer
     t.column :screen_name, :string
     t.column :text, :string
-    t.column :created_at, :string
+    t.column :created_at, :datetime
     t.column :protected, :boolean
     t.column :in_reply_to_status_id, :integer
     t.column :in_reply_to_user_id, :integer
