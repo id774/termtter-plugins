@@ -15,6 +15,7 @@ unless Status.table_exists?()
   ActiveRecord::Migration.create_table :statuses do |t|
     t.column :uid, :integer
     t.column :screen_name, :string
+    t.column :id_str, :string
     t.column :text, :string
     t.column :created_at, :datetime
     t.column :protected, :boolean
