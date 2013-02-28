@@ -33,11 +33,11 @@ end
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "sysadmin"
-  gem.homepage = "http://github.com/id774/sysadmin"
+  gem.name = "termtter-plugins"
+  gem.homepage = "http://github.com/id774/termtter-plugins"
   gem.license = "GPL"
-  gem.summary = %Q{Sysadmin Ruby}
-  gem.description = %Q{System Administration General Library}
+  gem.summary = %Q{Termtter Plugins}
+  gem.description = %Q{Termtter Plugins}
   gem.email = "idnanashi@gmail.com"
   gem.authors = ["id774"]
   # dependencies defined in Gemfile
