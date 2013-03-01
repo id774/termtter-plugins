@@ -9,9 +9,18 @@ module Termtter
       Termtter::Client.plug 'ar'
     end
 
-    it 'should set public_storage[:ar]' do
-      Termtter::Client.plug 'filter'
-      Client::public_storage.keys.should be_include(:filters)
+    it 'self.insert should not return false' do
+      Termtter::Client.plug 'ar'
+      @status = Status.new
+      @status.screen_name = 'hoge'
+      @status.id_str = '55555'
+      @status.text = 'ほげ'
+      @status.protected = true
+      @status.statuses_count = 500
+      @status.friends_count = 1000
+      @status.followers_count = 1500
+      @status.source = 'Termtter tests'
+      @status.save.should_not be_false
     end
   end
 end
