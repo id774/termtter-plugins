@@ -16,7 +16,7 @@ module Termtter::Client
       Gmail.new(username, password).fetch
     }
   )
-  
+
   register_command(
     :name => :gmail_open, :alias => :gmo,
     :help => ["gmail_open,gmo", "Open gmail with your browser"],

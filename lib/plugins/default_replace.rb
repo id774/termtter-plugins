@@ -184,7 +184,7 @@ module Termtter::Client
         execute("update #{text}")
       else
         raise Termtter::CommandNotFound, text
-      end  
+      end
     end
   end
 

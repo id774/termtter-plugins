@@ -24,7 +24,7 @@ module Termtter::Client
       end
     end
   end
-  
+
   register_command(
     :name => :stock_find, :alias => :stf,
     :help => ['stock_find,stf COMPANY_NAME', 'Find Stock Symbol'],
@@ -118,7 +118,7 @@ module Termtter::Client
                                     :start_date => start_date,
                                     :end_date => end_date
                                    ).values_with_header.split("\n").map { |line| line.split(",") }
-  
+
         else
           titles, *values = YahooJPStock::History.new(symbol, start_date, end_date, term).output
         end
@@ -176,7 +176,7 @@ module Termtter::Client
       begin
         indices = [[:日経平均, '998407'], [:Topix, '998405']]
         print_indices(indices)
- 
+
         portfolios = config.plugins.stock
 
         total_value, total_profit, total_cost, total_last_value = 0, 0, 0, 0

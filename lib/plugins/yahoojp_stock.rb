@@ -70,7 +70,7 @@ module YahooJPStock
       @candidates
     end
   end
-  
+
   class Quote
     include Interface
     SUMMARY = {
@@ -78,7 +78,7 @@ module YahooJPStock
       :current_price => ['div.priceDetail td.yjSt', 'div.priceDetail span.yjFL'],
       :day_change => ['div.priceDetail span.yjMSt', 'div.priceDetail p.yjSt']
     }
-      
+
     DETAILS = [
       :last_trade_price, :open_price, :day_high, :day_low, :volume,
       :trade_amount, :day_range, :market_cap, :shares, :div_yield,
@@ -89,7 +89,7 @@ module YahooJPStock
 
     (SUMMARY.keys + DETAILS).each { |k| attr_reader k }
     attr_reader :name, :symbol
-  
+
     def initialize(stock_code)
       @symbol = ['コード', URI.escape(stock_code)]
       @name = ['名称', nil]

@@ -1,7 +1,7 @@
 Termtter Plugins
 ================
 
-My custom termtter plugins.
+My original termtter plugins.
 
 **Termtter**
 
