@@ -4,12 +4,24 @@ require File.expand_path(File.dirname(__FILE__)) + '/../spec_helper'
 
 module Termtter
   describe Client, 'when the plugin is loaded' do
+    DB_PATH = '/tmp/termtter.db'
+
+    before(:each) do
+      File.delete(DB_PATH) if File.exists?(DB_PATH)
+      config.plugins.db.path = DB_PATH
+      load 'plugins/ar.rb'
+    end
+
+    after do
+      File.delete(DB_PATH) if File.exists?(DB_PATH)
+    end
+
     it 'should add commands' do
       Termtter::Client.should_receive(:register_command).exactly(4)
       Termtter::Client.plug 'ar'
     end
 
-    it 'self.save should not return false' do
+    it 'self.save should not return false and saved record should be readable' do
       Termtter::Client.plug 'ar'
       @status = Status.new
       @status.screen_name = 'hoge'
@@ -21,9 +33,7 @@ module Termtter
       @status.followers_count = 1500
       @status.source = 'Termtter tests'
       @status.save.should_not be_false
-    end
 
-    it 'saved record should be equal the origin record' do
       status_find = Status.find(:first)
       status_find.screen_name.should == 'hoge'
       status_find.id_str.should == '55555'
