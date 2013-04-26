@@ -18,7 +18,7 @@ kickstart() {
 }
 
 run_tests() {
-    rake spec
+    rake simplecov
 }
 
 main() {
