@@ -1,18 +1,35 @@
-# encoding: utf-8
-
+# -*- mode: ruby; coding: utf-8 -*-
 require 'rubygems'
-
+require 'bundler'
+require 'rake'
+require 'rake/clean'
+require 'rubygems/package_task'
+require 'rdoc/task'
 require 'rspec/core'
 require 'rspec/core/rake_task'
 
-task :spec do
-  RSpec::Core::RakeTask.new(:spec) do |spec|
-    spec.rspec_opts = ["-c","-fs"]
-    spec.pattern = FileList['spec/**/*_spec.rb']
+# Bundler::GemHelper.install_tasks
+
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.rspec_opts = ["-c", "-fs"]
+  spec.pattern = FileList['spec/**/*_spec.rb']
+end
+
+namespace :spec do
+  desc "Run RSpec for plugins"
+  RSpec::Core::RakeTask.new(:plugins) do |spec|
+    spec.rspec_opts = ["-c", "-fs"]
+    spec.pattern = FileList['spec/plugins/**/*_spec.rb']
+  end
+
+  desc "Run RSpec for main procedure"
+  RSpec::Core::RakeTask.new(:termtter) do |spec|
+    spec.rspec_opts = ["-c", "-fs"]
+    spec.pattern = FileList['spec/termtter/**/*_spec.rb']
   end
 end
 
-unless /^1\.8\./ =~ RUBY_VERSION
+if RUBY_VERSION >= '1.9.0'
   desc "Run RSpec code examples with simplecov"
   task :simplecov do
     ENV['COVERAGE'] = "on"
@@ -21,7 +38,7 @@ unless /^1\.8\./ =~ RUBY_VERSION
 else
   desc "Run RSpec code examples with rcov"
   RSpec::Core::RakeTask.new(:rcov) do |spec|
-    spec.pattern = FileList['spec/lib/**/*_spec.rb']
+    spec.pattern = FileList['spec/**/*_spec.rb']
     exclude_files = [
       "gems",
     ]
@@ -30,16 +47,13 @@ else
   end
 end
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "termtter-plugins"
-  gem.homepage = "http://github.com/id774/termtter-plugins"
-  gem.license = "GPL"
-  gem.summary = %Q{Termtter Plugins}
-  gem.description = %Q{Termtter Plugins}
-  gem.email = "idnanashi@gmail.com"
-  gem.authors = ["id774"]
-  # dependencies defined in Gemfile
+task :default => :spec
+
+desc 'Generate documentation for the termtter.'
+RDoc::Task.new do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "Termtter"
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end
-Jeweler::RubygemsDotOrgTasks.new
