@@ -6,14 +6,16 @@ module Termtter
   describe Client, 'when the plugin is loaded' do
     DB_PATH = '/tmp/termtter.db'
 
-    before(:each) do
+    def clear_db
       File.delete(DB_PATH) if File.exists?(DB_PATH)
-      config.plugins.db.path = DB_PATH
-      load 'plugins/ar.rb'
+    end
+
+    before(:each) do
+      clear_db
     end
 
     after do
-      File.delete(DB_PATH) if File.exists?(DB_PATH)
+      clear_db
     end
 
     it 'should add commands' do
@@ -22,6 +24,8 @@ module Termtter
     end
 
     it 'self.save should not return false and saved record should be readable' do
+      config.plugins.db.path = DB_PATH
+      load 'plugins/ar.rb'
       Termtter::Client.plug 'ar'
       @status = Status.new
       @status.screen_name = 'hoge'
