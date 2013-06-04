@@ -25,7 +25,7 @@ module Termtter
 
     it 'self.save should not return false and saved record should be readable' do
       config.plugins.db.path = DB_PATH
-      load 'plugins/ar.rb'
+      load 'plugins/ar-single.rb'
       Termtter::Client.plug 'ar'
       @status = Status.new
       @status.screen_name = 'hoge'
