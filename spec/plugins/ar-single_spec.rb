@@ -20,13 +20,13 @@ module Termtter
 
     it 'should add commands' do
       Termtter::Client.should_receive(:register_command).exactly(4)
-      Termtter::Client.plug 'ar'
+      Termtter::Client.plug 'ar-single'
     end
 
     it 'self.save should not return false and saved record should be readable' do
       config.plugins.db.path = DB_PATH
       load 'plugins/ar-single.rb'
-      Termtter::Client.plug 'ar'
+      Termtter::Client.plug 'ar-single'
       @status = Status.new
       @status.screen_name = 'hoge'
       @status.id_str = '55555'
